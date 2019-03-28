@@ -48,4 +48,7 @@ cd django.demo_news/
 * 移除`tree`套件
   > pip uninstall tree
 
+* 執行Django
+  > python manage.py runserver
+
 ---
