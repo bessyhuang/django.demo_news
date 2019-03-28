@@ -61,3 +61,8 @@ python manage.py runserver
 ```
 
 ---
+
+## 6. 改成Mariadb
+
+* 安裝文件：django mariadb ubuntu 18.04.odt
+* Flask - 資料庫：https://hackmd.io/s/ryWzxlTL4#
