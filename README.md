@@ -53,7 +53,11 @@ python manage.py startapp app_news_mainsite
 * 移除`tree`套件
   > pip uninstall tree
 
-* 執行Django
-  > python manage.py runserver
+
+## 5. 執行Django
+
+```
+python manage.py runserver
+```
 
 ---
