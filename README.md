@@ -121,3 +121,21 @@ MariaDB [db_demo]> show columns from app_news_mainsite_post;
 +----------+--------------+------+-----+---------+----------------+
 5 rows in set (0.002 sec)
 ```
+
+---
+
+## 9. 讀取資料庫中的內容 `view.py` `urls.py`
+
+* `view.py`
+
+```
+from django.http import HttpResponse
+from .models import Post
+```
+
+* `urls.py`
+
+```
+from django.urls import path, include
+from app_news_mainsite.views import news_01
+```
