@@ -7,10 +7,10 @@ cd django.demo_news/
 ## 1. 虛擬環境初始化
 
 `
-sudo apt-get install -y python3-pip
-sudo pip3 install virtualenv
-virtualenv venv
-source venv/bin/activate
+> sudo apt-get install -y python3-pip
+> sudo pip3 install virtualenv
+> virtualenv venv
+> source venv/bin/activate
 `
 ## 2. 安裝 Django
 
