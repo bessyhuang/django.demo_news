@@ -19,12 +19,10 @@ cd django.demo_news/
 > (venv) ~/django.demo_news$ pip install django
 
 * 查看安裝了哪些套件
-
 > pip freeze
 
 
 * 把安裝的套件匯出成`requirements.txt`
-
 > pip freeze > requirements.txt
 
 
@@ -40,7 +38,6 @@ cd django.demo_news/
 > python manage.py startapp app_news_mainsite
 
 * 查看`proj_news_blog`整個專案的樹狀結構
-
 > cd ..
 
 > pip install tree
@@ -48,7 +45,6 @@ cd django.demo_news/
 > tree proj_news_blog
 
 * 移除`tree`套件
-
 > pip uninstall tree
 
 ---
