@@ -20,16 +20,17 @@ cd django.demo_news/
 
 * 查看安裝了哪些套件
   > pip freeze
-
+  
+  Django==2.1.7
+  
+  pytz==2018.9
 
 * 把安裝的套件匯出成`requirements.txt`
   > pip freeze > requirements.txt
 
-
 ## 3. 建立project
 
 > django-admin startproject proj_news_blog
-
 
 ## 4. 建立app
 
