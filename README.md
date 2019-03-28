@@ -7,8 +7,11 @@ cd django.demo_news/
 ## 1. 虛擬環境初始化
 
 > sudo apt-get install -y python3-pip
+
 > sudo pip3 install virtualenv
+
 > virtualenv venv
+
 > source venv/bin/activate
 
 ## 2. 安裝 Django
@@ -33,12 +36,15 @@ cd django.demo_news/
 ## 4. 建立app
 
 > cd proj_news_blog/
+
 > python manage.py startapp app_news_mainsite
 
 * 查看`proj_news_blog`整個專案的樹狀結構
 
 > cd ..
+
 > pip install tree
+
 > tree proj_news_blog
 
 * 移除`tree`套件
