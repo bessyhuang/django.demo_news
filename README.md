@@ -1,8 +1,10 @@
 # django.demo_news
 Django 最新消息
+
 `
 git clone https://github.com/bessyhuang/django.demo_news.git
-
+`
+`
 cd django.demo_news/
 `
 
