@@ -66,3 +66,58 @@ python manage.py runserver
 
 * 安裝文件：django mariadb ubuntu 18.04.odt
 * Flask - 資料庫：https://hackmd.io/s/ryWzxlTL4#
+
+---
+
+## 7. 初始化 Django `settings.py` & 定義 最新消息的資料表 `models.py`
+
+* pub_date 欄位, 以 timezone.now 的方式讓它自動產生, 需要 pytz 套件：
+
+```
+pip install pytz
+```
+
+* 建立資料庫和Django間的中介檔案：
+
+```
+python manage.py makemigrations
+```
+
+* 同步更新資料庫的內容：
+
+```
+python manage.py migrate
+```
+
+## 8. 啟用admin管理介面 & 註冊並自訂Post顯示方式之類別 `admin.py`
+
+```
+python manage.py createsuperuser
+
+使用者名稱 (leave blank to use 'user'): admin
+電子信箱: 
+Password: admin
+Password (again):admin
+```
+
+* 確認 `models.py` Post資料表內的欄位有寫入 db_demo 資料庫內
+
+```
+sudo mysql -u root -p
+
+MariaDB [(none)]> SHOW DATABASES;
+MariaDB [(none)]> USE db_demo;
+MariaDB [db_demo]> show tables;
+MariaDB [db_demo]> show columns from app_news_mainsite_post;
+
++----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| id       | int(11)      | NO   | PRI | NULL    | auto_increment |
+| title    | varchar(200) | NO   |     | NULL    |                |
+| slug     | varchar(200) | NO   |     | NULL    |                |
+| body     | longtext     | NO   |     | NULL    |                |
+| pub_date | datetime(6)  | NO   |     | NULL    |                |
++----------+--------------+------+-----+---------+----------------+
+5 rows in set (0.002 sec)
+```
