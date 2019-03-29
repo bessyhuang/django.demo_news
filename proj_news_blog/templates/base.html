@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+	<div style="background-color: #FFECC9">
+		{% include 'header.html' %}
+	</div>
+
+	{% block headmessage %} {% endblock %}
+	{% block content %} {% endblock %}
+
+	<div style="background-color: #FFECC9">
+		{% include 'footer.html' %}
+	</div>
+</body>
+</html>

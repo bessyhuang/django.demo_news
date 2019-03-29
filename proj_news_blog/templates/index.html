@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Welcome to Latest News</title>
-</head>
-<body>
-	<h1>Welcome to Latest News</h1>
-	{{ posts }}
+{% extends 'base.html' %}
+{% block title %}Welcome to Latest News{% endblock %}
+
+{% block headmessage %}
+	<h2>Welcome to Latest News</h2>
+{% endblock %}
+
+{% block content %}
+	{% for post in posts %}
+		<h3><a href="/post/{{ post.slug }}">{{ post.title }}</a></h3>
+	{% endfor %}
+
 	<h3>現在時刻: {{ now }}</h3>
-	<hr>
-	{% for post in posts %}
-		<h2>{{ post.title }}</h2>
-		<p>{{ post.body }}</p>
-	{% endfor %}
-	<hr>
-	{% for post in posts %}
-		<h1><a href="/post/{{ post.slug }}">{{ post.title }}</a></h1>
-	{% endfor %}
-</body>
-</html>
+{% endblock %}

@@ -263,3 +263,33 @@ def showpost_news_01(request, slug):
 </body>
 </html>
 ```
+
+---
+
+## 12. 共用模板的使用`base.html` `header.html` `footer.html`
+
+* `base.html`
+
+```
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+	<div style="background-color: #FFECC9">
+		{% include 'header.html' %}
+	</div>
+
+	{% block headmessage %} {% endblock %}
+	{% block content %} {% endblock %}
+
+	<div style="background-color: #FFECC9">
+		{% include 'footer.html' %}
+	</div>
+</body>
+</html>
+```
+
+
