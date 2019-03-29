@@ -12,20 +12,24 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 </head>
 <body>
-	<div class="alert alert-primary">
-		{% include 'header.html' %}
-	</div>
-
-	{% block headmessage %} {% endblock %}
-	{% block content %} {% endblock %}
-
-	<div class="alert alert-secondary">
-		{% include 'footer.html' %}
-	</div>
-
-	<img src="{% static "images/rabbit.png" %}" alt="" width="10%">
-	<div class="spinner-border text-warning" role="status">
-	  <span class="sr-only">Loading...</span>
-	</div>
+	<div class="container-fluid">
+      <div class="alert alert-primary">{% include 'header.html' %}</div>
+      {% block headmessage %} {% endblock %}
+      <hr>
+      <div class="row">
+        <div class="col-4 col-md-4">
+          <div class="card" style="width: 20rem;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><a href="/news_01">一般事務</a></li>
+              <li class="list-group-item">演講及研討會訊息</li>
+              <li class="list-group-item">獎助學金</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-12 col-md-8">{% block content %} {% endblock %}</div>
+      </div>
+      <hr>
+      <div class="alert alert-secondary">{% include 'footer.html' %}</div>
+    </div>
 </body>
 </html>

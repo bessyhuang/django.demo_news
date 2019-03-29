@@ -6,9 +6,17 @@
 {% endblock %}
 
 {% block content %}
-	{% for post in posts %}
-		<h3><a href="/post/{{ post.slug }}">{{ post.title }}</a></h3>
-	{% endfor %}
+<div class="card" style="width: 60rem;">
+	<div class="card-header">一般事務</div>
 
-	<h3>現在時刻: {{ now }}</h3>
+	<ul class="list-group list-group-flush">
+	{% for post in posts %}
+	<li class="list-group-item">
+		<a href="/post/{{ post.slug }}">{{ post.title }}</a>
+		<p>{{ post.body | truncatechars:60 }}</p>
+		<p>發布時間: {{ post.pub_date | date:"Y-m-d, h:m:s" }}</p>
+	</li>
+	{% endfor %}
+	</ul>
+</div>
 {% endblock %}

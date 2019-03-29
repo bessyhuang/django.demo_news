@@ -294,9 +294,9 @@ def showpost_news_01(request, slug):
 
 ---
 
-## 13. JavaScript & CSS 檔案的引用 (Bootstrap)
+## 13. JavaScript & CSS 檔案的引用 (Bootstrap) & 圖片的引入
 
-* 將`bootstrap.min.css` & `bootstrap.min.js`放入`static`資料夾中 & 圖片的引入
+* 將`bootstrap.min.css` & `bootstrap.min.js`放入`static`資料夾中
 
 * (Bootstrap) `base.html`
 
@@ -323,4 +323,28 @@ STATICFILES_DIRS = [
 ```
 {% load static %}
 <img src="{% static "images/rabbit.png" %}" alt="" width="10%">
+```
+
+---
+
+## 14. 更改排版 & `index.html`顯示摘要與自訂日期格式
+
+* `index.html`顯示摘要與自訂日期格式
+
+```
+{% block content %}
+<div class="card" style="width: 60rem;">
+	<div class="card-header">一般事務</div>
+
+	<ul class="list-group list-group-flush">
+	{% for post in posts %}
+	<li class="list-group-item">
+		<a href="/post/{{ post.slug }}">{{ post.title }}</a>
+		<p>{{ post.body | truncatechars:60 }}</p>
+		<p>發布時間: {{ post.pub_date | date:"Y-m-d, h:m:s" }}</p>
+	</li>
+	{% endfor %}
+	</ul>
+</div>
+{% endblock %}
 ```

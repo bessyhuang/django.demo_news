@@ -7,9 +7,17 @@
 {% endblock %}
 
 {% block content %}
-<br>
-<h2>Title: {{ post.title }}</h2>
-<h3>Content: {{ post.body }}</h3>
-<br>
-<p><a href="/news_01">back to HOME</a></p>
+<div class="card" style="width: 60rem;">
+	<div class="card-header">
+		<h2>Title: {{ post.title }}</h2>
+	</div>
+	
+	<ul class="list-group list-group-flush">
+		<li class="list-group-item">
+			<h3>Content:<br><br>{{ post.body }}</h3>
+			<br>
+			<p><a href="/news_01">back to HOME</a></p>
+		</li>
+	</ul>	
+</div>
 {% endblock %}
