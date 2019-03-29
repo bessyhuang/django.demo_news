@@ -55,7 +55,7 @@ ROOT_URLCONF = 'proj_news_blog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,7 +77,6 @@ WSGI_APPLICATION = 'proj_news_blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'NAME': 'db_demo',
         'USER': 'testchia_test',
         'PASSWORD': '123',

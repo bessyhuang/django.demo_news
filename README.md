@@ -139,3 +139,72 @@ from .models import Post
 from django.urls import path, include
 from app_news_mainsite.views import news_01
 ```
+
+---
+
+## 10. 建立網頁輸出模板template `index.html` & 設定`settings.py`的TEMPLATE區塊 & 調整`views.py`
+
+* 建立`templates`＆ `static` 資料夾
+
+```
+(venv) ~/django.demo_news/proj_news_blog$ mkdir templates
+(venv) ~/django.demo_news/proj_news_blog$ mkdir static
+
+(venv) ~/django.demo_news/proj_news_blog$ cd ..
+(venv) ~/django.demo_news$ tree proj_news_blog/
+
+proj_news_blog/
+├── app_news_mainsite
+│   ├── admin.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── 0001_initial.cpython-36.pyc
+│   │       └── __init__.cpython-36.pyc
+│   ├── models.py
+│   ├── __pycache__
+│   │   ├── admin.cpython-36.pyc
+│   │   ├── __init__.cpython-36.pyc
+│   │   ├── models.cpython-36.pyc
+│   │   └── views.cpython-36.pyc
+│   ├── tests.py
+│   └── views.py
+├── manage.py
+├── proj_news_blog
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-36.pyc
+│   │   ├── settings.cpython-36.pyc
+│   │   ├── urls.cpython-36.pyc
+│   │   └── wsgi.cpython-36.pyc
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── static
+└── templates
+
+8 directories, 23 files
+```
+
+* 設定`settings.py`的TEMPLATE區塊
+
+```
+'DIRS': [os.path.join(BASE_DIR, 'templates')],
+```
+
+* 調整`views.py` [把posts和now(現在時刻)丟到模板] , 並新增`index.html`
+
+```
+from django.shortcuts import render
+from django.http import HttpResponse
+from .models import Post
+from datetime import datetime
+
+def news_01(request):
+    posts = Post.objects.all()
+    now = datetime.now()
+    return render(request, 'index.html', locals())
+```

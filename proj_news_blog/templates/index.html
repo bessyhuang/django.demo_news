@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome to Latest News</title>
+</head>
+<body>
+	<h1>Welcome to Latest News</h1>
+	{{ posts }}
+	<h3>現在時刻: {{ now }}</h3>
+	<hr>
+	{% for post in posts %}
+		<h2>{{ post.title }}</h2>
+		<p>{{ post.body }}</p>
+	{% endfor %}
+</body>
+</html>
