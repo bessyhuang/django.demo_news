@@ -292,4 +292,35 @@ def showpost_news_01(request, slug):
 </html>
 ```
 
+---
 
+## 13. JavaScript & CSS 檔案的引用 (Bootstrap)
+
+* 將`bootstrap.min.css` & `bootstrap.min.js`放入`static`資料夾中 & 圖片的引入
+
+* (Bootstrap) `base.html`
+
+```
+{% load static %}
+
+<link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+<link href="{% static "js/bootstrap.min.js" %}">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+```
+
+* `settings.py`
+
+```
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+```
+
+* 圖片的引入 (需要建立`static/images`資料夾)
+
+```
+{% load static %}
+<img src="{% static "images/rabbit.png" %}" alt="" width="10%">
+```
