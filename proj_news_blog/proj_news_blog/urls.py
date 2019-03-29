@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from app_news_mainsite.views import news_01
+from app_news_mainsite.views import news_01, showpost_news_01
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('news_01/', news_01),
+    path('post/<slug:slug>/', showpost_news_01),
 ]

@@ -208,3 +208,58 @@ def news_01(request):
     now = datetime.now()
     return render(request, 'index.html', locals())
 ```
+
+---
+
+## 11. 網址對應`urls.py` & 調整`views.py` `index.html` & 建立`post.html`
+
+* `index.html`
+
+```
+{% for post in posts %}
+	<h1><a href="/post/{{ post.slug }}">{{ post.title }}</a></h1>
+{% endfor %}
+```
+
+* `urls.py`
+
+```
+from app_news_mainsite.views import showpost_news_01
+
+urlpatterns = [
+    path('post/<slug:slug>/', showpost_news_01),
+]
+```
+
+* `views.py`
+
+```
+from django.shortcuts import redirect
+
+def showpost_news_01(request, slug):
+    try:
+        post = Post.objects.get(slug = slug)
+        if post != None:
+            return render(request, 'post.html', locals())
+    except:
+        return redirect('news_01/')
+```
+
+* `post.html`
+
+```
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome to Latest News</title>
+</head>
+<body>
+	<h1>{{ post.title }}</h1>
+	<hr>
+	<h3>{{ post.body }}</h3>
+	<br>
+	<p><a href="/news_01">back to HOME</a></p>
+</body>
+</html>
+```
