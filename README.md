@@ -348,3 +348,62 @@ STATICFILES_DIRS = [
 </div>
 {% endblock %}
 ```
+
+---
+
+## 15. 新聞文章的HTML內容處理 (Markdown)
+
+* 安裝`Markdown`套件
+
+```
+pip install django-markdown-deux
+```
+
+* `settings.py`
+
+```
+INSTALLED_APPS = [
+    'markdown_deux',
+]
+```
+
+* `pip freeze > requirements.txt`
+
+```
+Django==2.1.7
+django-markdown-deux==1.0.5
+markdown2==2.3.7
+PyMySQL==0.9.3
+pytz==2018.9
+```
+
+* `post.html`
+
+```
+{% load markdown_deux_tags %}
+
+<h3>Content:<br><br>{{ post.body | markdown}}</h3>
+```
+
+* 透過進入管理者後台`http://127.0.0.1:8000/admin`，直接`張貼圖片`於內文中。使用第三方圖形檔案服務網站（imgur.com）。
+
+```
+![test](http://8maple.ru/wp-content/uploads/2018/08/3561-01.jpg)
+
+####《延禧攻略》（英語：Story of Yanxi Palace）是2018年古裝劇，由吳謹言及佘詩曼領銜主演，秦嵐及聶遠特別主演，並由許凱及譚卓聯合主演。
+```
+
+* `mystyle.css`自訂統一的圖片顯示大小
+
+```
+img[alt = "test" ] {
+  width: 50%;
+}
+```
+
+* `base.html`引入`mystyle.css`
+
+```
+<link rel="stylesheet" href="{% static "css/mystyle.css" %}">
+```
+
