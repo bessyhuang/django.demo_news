@@ -486,7 +486,7 @@ proj_news_blog/
 
 ---
 
-## 17. File Uploads (整合至`models.py`的`class Post`) & 修改`admin.py` `views.py` `settings.py` `urls.py` `post.html`
+## 17. File Uploads (整合至`models.py`的`class Post`) & 修改`admin.py` `settings.py` `urls.py` `post.html`
 
 * Django documentation: https://docs.djangoproject.com/en/2.1/
 * File Uploads: https://docs.djangoproject.com/en/2.1/topics/http/file-uploads/
@@ -501,10 +501,6 @@ class Post(models.Model):
 # 自訂Post顯示方式之類別
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title','slug','pub_date','post_files')
-
-### views.py ###
-def news_01(request):
-    post_lists = list()
 
 ### settings.py ###
 MEDIA_URL = '/media/'
