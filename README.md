@@ -483,3 +483,45 @@ proj_news_blog/
 
 11 directories, 50 files
 ```
+
+---
+
+## 17. File Uploads (整合至`models.py`的`class Post`) & 修改`admin.py` `views.py` `settings.py` `urls.py` `post.html`
+
+* Django documentation: https://docs.djangoproject.com/en/2.1/
+* File Uploads: https://docs.djangoproject.com/en/2.1/topics/http/file-uploads/
+* NULL vs. BLANK: https://docs.djangoproject.com/en/dev/ref/models/fields/#null
+
+```
+### models.py ###
+class Post(models.Model):
+    post_files = models.FileField(upload_to='post_files/', blank=True)
+
+### admin.py ###
+# 自訂Post顯示方式之類別
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('title','slug','pub_date','post_files')
+
+### views.py ###
+def news_01(request):
+    post_lists = list()
+
+### settings.py ###
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #will build a file 'media' in same level path as manage.py
+
+### urls.py ###
+from django.conf import settings
+from django.conf.urls.static import static
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+### post.html ###
+{% if post.post_files %}
+    <h3>post_files:</h3>
+    <img src="{{ post.post_files.url }}" width="70%">
+    {% else %}
+    <p>No post_files ~</p>
+{% endif %}
+```

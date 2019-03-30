@@ -7,6 +7,10 @@ class Post(models.Model):
     body = models.TextField()
     pub_date = models.DateTimeField(default=timezone.now)
 
+    #當檔案透過管理者後台http://127.0.0.1:8000/admin上傳時, media/post_files資料夾會被自動建立。
+    #blank=True 可不上傳檔案; 
+    post_files = models.FileField(upload_to='post_files/', blank=True) 
+
     class Meta:
         ordering = ('-pub_date',)
 

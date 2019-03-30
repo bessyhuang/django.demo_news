@@ -3,6 +3,6 @@ from .models import Post
 
 # 自訂Post顯示方式之類別
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title','slug','pub_date')
+    list_display = ('title','slug','pub_date','post_files')
 
 admin.site.register(Post, PostAdmin)

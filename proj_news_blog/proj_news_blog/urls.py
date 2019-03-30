@@ -18,8 +18,16 @@ from django.urls import path, include
 
 from app_news_mainsite.views import news_01, showpost_news_01
 
+#upload
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('news_01/', news_01),
     path('post/<slug:slug>/', showpost_news_01),
 ]
+
+#upload
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

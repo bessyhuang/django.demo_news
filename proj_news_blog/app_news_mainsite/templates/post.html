@@ -16,6 +16,13 @@
 	<ul class="list-group list-group-flush">
 		<li class="list-group-item">
 			<h3>Content:<br><br>{{ post.body | markdown}}</h3>
+
+			{% if post.post_files %}
+			<h3>post_files:</h3>
+			<img src="{{ post.post_files.url }}" width="70%">
+			{% else %}
+			<p>No post_files ~</p>
+			{% endif %}
 			<br>
 			<p><a href="/news_01">back to HOME</a></p>
 		</li>
