@@ -407,3 +407,79 @@ img[alt = "test" ] {
 <link rel="stylesheet" href="{% static "css/mystyle.css" %}">
 ```
 
+---
+
+## 16. Django網站的構成以及配合
+
+* 移動`static` 、`templates` (彈性？須討論網站的構成)
+
+  > 此作法的目的：讓模板和靜態檔案也跟著app跑
+
+```
+(venv) user@fengchia-swift-sf314-52:~/django.demo_news$ tree proj_news_blog/
+
+proj_news_blog/
+├── app_news_mainsite
+│   ├── admin.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── 0001_initial.cpython-36.pyc
+│   │       └── __init__.cpython-36.pyc
+│   ├── models.py
+│   ├── __pycache__
+│   │   ├── admin.cpython-36.pyc
+│   │   ├── __init__.cpython-36.pyc
+│   │   ├── models.cpython-36.pyc
+│   │   └── views.cpython-36.pyc
+│   ├── static
+│   │   ├── css
+│   │   │   ├── bootstrap.css
+│   │   │   ├── bootstrap.css.map
+│   │   │   ├── bootstrap-grid.css
+│   │   │   ├── bootstrap-grid.css.map
+│   │   │   ├── bootstrap-grid.min.css
+│   │   │   ├── bootstrap-grid.min.css.map
+│   │   │   ├── bootstrap.min.css
+│   │   │   ├── bootstrap.min.css.map
+│   │   │   ├── bootstrap-reboot.css
+│   │   │   ├── bootstrap-reboot.css.map
+│   │   │   ├── bootstrap-reboot.min.css
+│   │   │   ├── bootstrap-reboot.min.css.map
+│   │   │   └── mystyle.css
+│   │   ├── images
+│   │   │   └── rabbit.png
+│   │   └── js
+│   │       ├── bootstrap.bundle.js
+│   │       ├── bootstrap.bundle.js.map
+│   │       ├── bootstrap.bundle.min.js
+│   │       ├── bootstrap.bundle.min.js.map
+│   │       ├── bootstrap.js
+│   │       ├── bootstrap.js.map
+│   │       ├── bootstrap.min.js
+│   │       └── bootstrap.min.js.map
+│   ├── templates
+│   │   ├── base.html
+│   │   ├── footer.html
+│   │   ├── header.html
+│   │   ├── index.html
+│   │   └── post.html
+│   ├── tests.py
+│   └── views.py
+├── manage.py
+└── proj_news_blog
+    ├── __init__.py
+    ├── __pycache__
+    │   ├── __init__.cpython-36.pyc
+    │   ├── settings.cpython-36.pyc
+    │   ├── urls.cpython-36.pyc
+    │   └── wsgi.cpython-36.pyc
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+
+11 directories, 50 files
+```
