@@ -561,3 +561,65 @@ class PostAdmin(admin.ModelAdmin):
 <p>No photo ~</p>	
 {% endif %}
 ```
+
+---
+
+## 19. Uploads (透過`html_for_upload.html`上傳檔案，檔案會直接傳到media資料夾內，沒有另建其他資料夾)
+
+* `urls.py`
+
+```
+from app_news_mainsite.views import html_for_upload
+
+urlpatterns = [
+    path('html_for_upload/', html_for_upload, name='html_for_upload'), 
+]
+```
+
+* `views.py`
+
+```
+from django.core.files.storage import FileSystemStorage
+
+#檔案會直接傳到media資料夾內，沒有另建其他資料夾
+def html_for_upload(request): 
+    context = {}
+    if request.method == 'POST':
+        uploaded_file = request.FILES['doc_upload_to_media']
+        fs = FileSystemStorage()
+        name = fs.save(uploaded_file.name, uploaded_file)
+        url = fs.url(name)
+        context['url'] = fs.url(name)
+    return render(request, 'html_for_upload.html', context)
+```
+
+* `html_for_upload.html`
+
+```
+{% extends 'base.html' %}
+
+{% block title %}Upload File{% endblock %}
+
+{% block content %} 
+<div class="jumbotron">
+<h1 class="display-4">Upload File</h1>
+<p class="lead"></p>
+<hr class="my-4">
+<p></p>
+<div class="form-group">
+  	<form method="post" enctype="multipart/form-data" class="form-inline">
+	  	<div class="form-group mx-sm-3 mb-2">
+	  		{% csrf_token %}
+		<input type="file" name="doc_upload_to_media" class="form-control-file">
+		<button type="submit" class="btn btn-warning mb-2">Upload</button>
+		</div>
+	</form>
+</div>
+
+{% if url %}
+<p>Uploaded File: <a href="{{ url }}">{{ url }}</a></p>
+{% endif %}
+</div>
+{% endblock %}
+```
+

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload File{% endblock %}
+
+{% block content %} 
+<div class="jumbotron">
+  	<h1 class="display-4">Upload File</h1>
+  	<p class="lead"></p>
+  	<hr class="my-4">
+  	<p></p>
+  	<div class="form-group">
+	  	<form method="post" enctype="multipart/form-data" class="form-inline">
+		  	<div class="form-group mx-sm-3 mb-2">
+		  		{% csrf_token %}
+    			<input type="file" name="doc_upload_to_media" class="form-control-file">
+    			<button type="submit" class="btn btn-warning mb-2">Upload</button>
+  			</div>
+		</form>
+	</div>
+  
+  	{% if url %}
+  	<p>Uploaded File: <a href="{{ url }}">{{ url }}</a></p>
+  	{% endif %}
+</div>
+{% endblock %}

@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from app_news_mainsite.views import news_01, showpost_news_01
+from app_news_mainsite.views import html_for_upload
 
 #upload
 from django.conf import settings
@@ -26,6 +27,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('news_01/', news_01),
     path('post/<slug:slug>/', showpost_news_01),
+
+    path('html_for_upload/', html_for_upload, name='html_for_upload'), 
 ]
 
 #upload
