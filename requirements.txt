@@ -1,5 +1,6 @@
 Django==2.1.7
 django-markdown-deux==1.0.5
 markdown2==2.3.7
+Pillow==5.4.1
 PyMySQL==0.9.3
 pytz==2018.9

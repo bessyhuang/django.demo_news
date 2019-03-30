@@ -11,6 +11,8 @@ class Post(models.Model):
     #blank=True 可不上傳檔案; 
     post_files = models.FileField(upload_to='post_files/', blank=True) 
 
+    photo = models.ImageField(upload_to='photo/', blank=True)
+
     class Meta:
         ordering = ('-pub_date',)
 

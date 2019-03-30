@@ -17,13 +17,26 @@
 		<li class="list-group-item">
 			<h3>Content:<br><br>{{ post.body | markdown}}</h3>
 
+			<hr>
+
 			{% if post.post_files %}
 			<h3>post_files:</h3>
 			<img src="{{ post.post_files.url }}" width="70%">
 			{% else %}
 			<p>No post_files ~</p>
 			{% endif %}
+			
+			<hr>
+
+			{% if post.photo %}
+			<h3>photo:</h3>
+			<img src="{{ post.photo.url }}" width="70%">
+			{% else %}
+			<p>No photo ~</p>	
+			{% endif %}
+			
 			<br>
+			<hr>
 			<p><a href="/news_01">back to HOME</a></p>
 		</li>
 	</ul>	

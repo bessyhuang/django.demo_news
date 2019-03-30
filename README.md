@@ -521,3 +521,43 @@ if settings.DEBUG:
     <p>No post_files ~</p>
 {% endif %}
 ```
+
+---
+
+## 18. Image Uploads (整合至`models.py`的`class Post`) & 修改`admin.py` `post.html`
+
+* 安裝`Pillow`套件
+
+```
+pip install Pillow
+```
+
+* `pip freeze > requirements.txt`
+
+```
+Django==2.1.7
+django-markdown-deux==1.0.5
+markdown2==2.3.7
+Pillow==5.4.1
+PyMySQL==0.9.3
+pytz==2018.9
+```
+
+```
+### models.py ###
+class Post(models.Model):
+    photo = models.ImageField(upload_to='photo/', blank=True)
+
+### admin.py ###
+# 自訂Post顯示方式之類別
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('title','slug','pub_date','post_files','photo')
+
+### post.html ###
+{% if post.photo %}
+<h3>photo:</h3>
+<img src="{{ post.photo.url }}" width="70%">
+{% else %}
+<p>No photo ~</p>	
+{% endif %}
+```
